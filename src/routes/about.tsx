@@ -1,3 +1,4 @@
+import { Heading } from "@chakra-ui/react";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/about")({
@@ -5,5 +6,5 @@ export const Route = createFileRoute("/about")({
 });
 
 function About() {
-  return <div className="p-2">Hello from About!</div>;
+  return <Heading>Hello from About!</Heading>;
 }
