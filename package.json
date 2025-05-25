@@ -9,10 +9,11 @@
     "preview": "yarn run build && vite preview",
     "deploy": "drizzle-kit migrate && yarn run build && wrangler deploy",
     "cf-typegen": "wrangler types",
-    "generate": "drizzle-kit generate",
-    "migrate:dev": "wrangler d1 migrations apply click-and-party-db --local",
-    "migrate:prod": "drizzle-kit migrate",
-    "studio": "drizzle-kit studio --config drizzle.config.local.ts"
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:dev": "wrangler d1 migrations apply click-and-party-db --local",
+    "db:migrate:prod": "drizzle-kit migrate",
+    "db:studio:dev": "drizzle-kit studio",
+    "db:studio:prod": "NODE_ENV=production drizzle-kit studio"
   },
   "dependencies": {
     "@biomejs/biome": "^1.9.4",
