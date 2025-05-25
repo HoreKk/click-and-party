@@ -18,7 +18,7 @@
     {
       "binding": "DB",
       "database_name": "click-and-party-db",
-      "database_id": "6fb41c31-7546-44ab-8bc6-2bb15cd2abb7",
+      "database_id": "9c7b99e8-06b4-4bb6-9294-f277ee800ce6",
       "migrations_dir": "drizzle/migrations"
     }
   ]
