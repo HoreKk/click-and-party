@@ -3,7 +3,7 @@ import { createContext } from "./trpc/context";
 import { appRouter } from "./trpc/router";
 
 export default {
-  async fetch(request, env, ctx) {
+  fetch(request, env, ctx) {
     const url = new URL(request.url);
 
     if (url.pathname.startsWith("/api")) {

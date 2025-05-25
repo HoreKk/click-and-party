@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "yarn run build && vite preview",
-    "deploy": "yarn run build && drizzle-kit generate && drizzle-kit migrate && wrangler deploy",
+    "deploy": "drizzle-kit migrate && yarn run build && wrangler deploy",
     "cf-typegen": "wrangler types",
     "generate": "drizzle-kit generate",
     "migrate:dev": "wrangler d1 migrations apply click-and-party-db --local",
