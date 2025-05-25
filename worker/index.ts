@@ -1,4 +1,5 @@
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import { app } from "./hono/api";
 import { createContext } from "./trpc/context";
 import { appRouter } from "./trpc/router";
 
@@ -16,9 +17,6 @@ export default {
       });
     }
 
-    return new Response("Not Found", {
-      status: 404,
-      headers: { "Content-Type": "text/plain" },
-    });
+    return app.fetch(request, env, ctx);
   },
 } satisfies ExportedHandler<Env>;

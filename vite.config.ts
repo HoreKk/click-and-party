@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 
 import { cloudflare } from "@cloudflare/vite-plugin";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import Icons from "unplugin-icons/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vite.dev/config/
@@ -12,5 +13,9 @@ export default defineConfig({
     cloudflare(),
     tsconfigPaths(),
     TanStackRouterVite({ target: "react", autoCodeSplitting: true }),
+    Icons({
+      compiler: "jsx",
+      jsx: "react",
+    }),
   ],
 });

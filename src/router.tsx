@@ -30,7 +30,6 @@ export function createRouter() {
       trpc,
       queryClient,
     },
-
     Wrap: function WrapComponent({ children }) {
       return (
         <QueryClientProvider client={queryClient}>

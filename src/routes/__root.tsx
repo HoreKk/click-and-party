@@ -1,23 +1,22 @@
-import { Flex, Link } from "@chakra-ui/react";
-import {
-  Outlet,
-  Link as TanstackLink,
-  createRootRoute,
-} from "@tanstack/react-router";
+import Navbar from "@/components/Navbar";
+import { Container } from "@chakra-ui/react";
+import type { QueryClient } from "@tanstack/react-query";
+import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
+import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
+import type { AppRouter } from "../../worker/trpc/router";
 
-export const Route = createRootRoute({
+export interface RouterAppContext {
+  trpc: TRPCOptionsProxy<AppRouter>;
+  queryClient: QueryClient;
+}
+
+export const Route = createRootRouteWithContext<RouterAppContext>()({
   component: () => (
     <>
-      <Flex alignItems="center" gap={4} mb={4}>
-        <Link asChild _active={{ fontWeight: "bold" }}>
-          <TanstackLink to="/">Home</TanstackLink>
-        </Link>
-        <Link asChild _active={{ fontWeight: "bold" }}>
-          <TanstackLink to="/about">About</TanstackLink>
-        </Link>
-      </Flex>
-      <hr />
-      <Outlet />
+      <Navbar />
+      <Container mt={8}>
+        <Outlet />
+      </Container>
     </>
   ),
 });
