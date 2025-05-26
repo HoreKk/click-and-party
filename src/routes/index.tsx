@@ -139,7 +139,7 @@ function Index() {
               key={game.id}
               overflow="hidden"
               borderRadius="2xl"
-              maxW="50%"
+              w="50%"
             >
               <Image
                 src="https://picsum.photos/600/250"
