@@ -133,13 +133,13 @@ function Index() {
         <Heading size="2xl" textAlign="center" color="textSecondary" mt={7}>
           Tous nos jeux multijoueurs
         </Heading>
-        <Flex flexWrap="wrap" gap={4} mt={9}>
+        <Flex flexWrap="wrap" gap={5} mt={9} w="full">
           {games.map((game) => (
             <Card.Root
               key={game.id}
-              maxW="50%"
               overflow="hidden"
               borderRadius="2xl"
+              maxH="50%"
             >
               <Image
                 src="https://picsum.photos/600/250"

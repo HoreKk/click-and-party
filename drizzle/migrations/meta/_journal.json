@@ -15,6 +15,13 @@
       "when": 1748205659302,
       "tag": "0001_volatile_sphinx",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1748300203658,
+      "tag": "0002_mature_korg",
+      "breakpoints": true
     }
   ]
 }
