@@ -31,7 +31,7 @@ function Index() {
           <Card.Root
             borderRadius="2xl"
             h="460px"
-            backgroundImage="url('/public/placeholder-card-game.png')"
+            backgroundImage="url('/placeholder-card-game.png')"
             backgroundSize="cover"
             backgroundPosition="center"
           >
