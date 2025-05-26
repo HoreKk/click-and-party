@@ -1,6 +1,6 @@
 import { CustomLink } from "@/components/CustomLink";
 import Navbar from "@/components/Navbar";
-import { Box, Center, Container, Flex, Heading } from "@chakra-ui/react";
+import { Box, Center, Container, Heading } from "@chakra-ui/react";
 import type { QueryClient } from "@tanstack/react-query";
 import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
