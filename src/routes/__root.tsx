@@ -1,5 +1,6 @@
+import { CustomLink } from "@/components/CustomLink";
 import Navbar from "@/components/Navbar";
-import { Box, Container } from "@chakra-ui/react";
+import { Box, Center, Container, Flex, Heading } from "@chakra-ui/react";
 import type { QueryClient } from "@tanstack/react-query";
 import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
@@ -27,5 +28,15 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
         <Outlet />
       </Container>
     </>
+  ),
+  notFoundComponent: () => (
+    <Center flexDir="column" height="calc(100vh - 72px)">
+      <Heading as="h1" size="4xl" mb={4}>
+        Page non trouvée
+      </Heading>
+      <CustomLink to="/" color="primary">
+        Retour à l'accueil
+      </CustomLink>
+    </Center>
   ),
 });
