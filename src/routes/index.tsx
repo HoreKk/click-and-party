@@ -1,22 +1,32 @@
+import { trpc } from "@/router";
 import {
   Box,
   Button,
   Card,
+  Center,
   Flex,
   Grid,
   GridItem,
   Heading,
   Icon,
+  Image,
   Text,
 } from "@chakra-ui/react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
+import PlayingCardsIcon from "~icons/fluent/playing-cards-20-filled";
 import RocketIcon from "~icons/fluent/rocket-20-regular";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  loader: async ({ context: { queryClient, trpc } }) => {
+    await queryClient.ensureQueryData(trpc.games.getList.queryOptions());
+  },
 });
 
 function Index() {
+  const { data: games } = useSuspenseQuery(trpc.games.getList.queryOptions());
+
   const fakeReleaseData = [
     { id: 1, name: "The virus game 1.0.4" },
     { id: 2, name: "The virus game 1.0.3" },
@@ -46,7 +56,7 @@ function Index() {
                 content: '""',
                 position: "absolute",
                 inset: 0,
-                backdropFilter: "blur(24px)", // Increased blur
+                backdropFilter: "blur(24px)",
                 maskImage:
                   "linear-gradient(to bottom, rgba(255,0,0,0), rgba(0,0,0,1))",
                 zIndex: 0,
@@ -101,6 +111,54 @@ function Index() {
           </Flex>
         </GridItem>
       </Grid>
+      <Center flexDir="column" mt={16}>
+        <Flex
+          borderRadius="full"
+          borderWidth={1}
+          borderColor="primary"
+          w="fit-content"
+          pl={3.5}
+          pr={4}
+          pt={1.5}
+          pb={2}
+          gap={1}
+          bgColor={{ _dark: "transparent", _light: "primary" }}
+          color={{ _dark: "primary", _light: "white" }}
+        >
+          <Icon as={PlayingCardsIcon} boxSize={8} mt="auto" />
+          <Text fontSize="3xl" fontWeight={700} lineHeight="normal">
+            Jeux
+          </Text>
+        </Flex>
+        <Heading size="2xl" textAlign="center" color="textSecondary" mt={7}>
+          Tous nos jeux multijoueurs
+        </Heading>
+        <Flex flexWrap="wrap" gap={4} mt={9}>
+          {games.map((game) => (
+            <Card.Root
+              key={game.id}
+              maxW="50%"
+              overflow="hidden"
+              borderRadius="2xl"
+            >
+              <Image
+                src="https://picsum.photos/600/250"
+                alt="Green double couch with wooden legs"
+                maxH="250px"
+              />
+              <Card.Body gap={2}>
+                <Card.Title>{game.name}</Card.Title>
+                <Card.Description>{game.description}</Card.Description>
+              </Card.Body>
+              <Card.Footer>
+                <Button w="full" colorPalette="primaryPalette">
+                  Créer un salon
+                </Button>
+              </Card.Footer>
+            </Card.Root>
+          ))}
+        </Flex>
+      </Center>
     </Box>
   );
 }

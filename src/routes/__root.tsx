@@ -24,7 +24,7 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
         backgroundGradient="defaultPrimary"
         zIndex={-1}
       />
-      <Container minH="calc(100% - 72px)" overflowY="auto">
+      <Container minH="calc(100% - 72px)" overflowY="auto" pb={32}>
         <Outlet />
       </Container>
     </>

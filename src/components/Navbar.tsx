@@ -59,7 +59,7 @@ const Navbar = () => {
                 Créer un salon
               </CustomLink>
             </Button>
-            <ColorModeButton colorPalette="primaryPalette" />
+            <ColorModeButton />
           </Flex>
         </Flex>
       </Container>
