@@ -3,6 +3,7 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "./components/ui/provider";
 import { createRouter } from "./router";
+import "./utils/globals.css";
 
 // Create a new router instance
 const router = createRouter();
