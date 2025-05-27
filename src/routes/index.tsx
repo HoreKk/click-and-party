@@ -16,6 +16,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import PlayingCardsIcon from "~icons/fluent/playing-cards-20-filled";
 import RocketIcon from "~icons/fluent/rocket-20-regular";
+import basicImgUrl from "/placeholder-card-game.webp?url";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -41,7 +42,7 @@ function Index() {
           <Card.Root
             borderRadius="2xl"
             h="460px"
-            backgroundImage="url('/placeholder-card-game.png')"
+            backgroundImage={`url(${basicImgUrl})`}
             backgroundSize="cover"
             backgroundPosition="center"
           >
