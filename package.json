@@ -38,6 +38,7 @@
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.2.4",
     "@iconify-json/fluent": "^1.2.22",
+    "@iconify-json/simple-icons": "^1.2.36",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@tanstack/router-plugin": "^1.120.10",

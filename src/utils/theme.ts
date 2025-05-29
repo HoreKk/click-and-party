@@ -22,6 +22,9 @@ const config = defineConfig({
         secondary: { value: "#2c5282" },
         uiGray: { value: "#524F60" },
       },
+      radii: {
+        "2.5xl": { value: "1.25rem" },
+      },
     },
     semanticTokens: {
       colors: {

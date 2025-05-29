@@ -1,6 +1,7 @@
 import { CustomLink } from "@/components/CustomLink";
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { Box, Center, Container, Heading } from "@chakra-ui/react";
+import { Box, Center, Container, Heading, Separator } from "@chakra-ui/react";
 import type { QueryClient } from "@tanstack/react-query";
 import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 import type { TRPCOptionsProxy } from "@trpc/tanstack-react-query";
@@ -24,8 +25,12 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
         backgroundGradient="defaultPrimary"
         zIndex={-1}
       />
-      <Container minH="calc(100% - 72px)" overflowY="auto" pb={32}>
+      <Container minH="calc(100% - 72px)" overflowY="auto">
         <Outlet />
+        <Separator mt={20} w="80%" mx="auto" />
+        <Box my={14}>
+          <Footer />
+        </Box>
       </Container>
     </>
   ),

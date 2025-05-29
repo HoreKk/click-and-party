@@ -14,25 +14,58 @@ import {
 } from "@chakra-ui/react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
+import PenSparkleIcon from "~icons/fluent/pen-sparkle-20-filled";
+import PeopleCommunityIcon from "~icons/fluent/people-community-20-filled";
 import PlayingCardsIcon from "~icons/fluent/playing-cards-20-filled";
 import RocketIcon from "~icons/fluent/rocket-20-regular";
+import TrophyIcon from "~icons/fluent/trophy-20-filled";
 import basicImgUrl from "/placeholder-card-game.webp?url";
 
 export const Route = createFileRoute("/")({
   component: Index,
   loader: async ({ context: { queryClient, trpc } }) => {
-    await queryClient.ensureQueryData(trpc.games.getList.queryOptions());
+    await queryClient.ensureQueryData(
+      trpc.games.getList.queryOptions({
+        page: 1,
+        numberPerPage: 4,
+      }),
+    );
   },
 });
 
 function Index() {
-  const { data: games } = useSuspenseQuery(trpc.games.getList.queryOptions());
+  const { data: games } = useSuspenseQuery(
+    trpc.games.getList.queryOptions({
+      page: 1,
+      numberPerPage: 4,
+    }),
+  );
 
   const fakeReleaseData = [
     { id: 1, name: "The virus game 1.0.4" },
     { id: 2, name: "The virus game 1.0.3" },
     { id: 3, name: "The virus game 1.0.2" },
     { id: 4, name: "The virus game 1.0.1" },
+  ];
+
+  const gameExplanationItems = [
+    {
+      name: "Créer ton compte",
+      description: "Connecte toi en quelques secondes et créer ton profil.",
+      icon: PenSparkleIcon,
+    },
+    {
+      name: "Rejoins ou Créer une salle",
+      description:
+        "Cherche les salles ouvertes ou créer la tienne et invite tes amis à jouer.",
+      icon: PeopleCommunityIcon,
+    },
+    {
+      name: "Joue et Gagne",
+      description:
+        "Joue à des jeux excitants, monte les classements et gagne des points.",
+      icon: TrophyIcon,
+    },
   ];
 
   return (
@@ -131,7 +164,7 @@ function Index() {
             Jeux
           </Text>
         </Flex>
-        <Heading size="2xl" textAlign="center" color="textSecondary" mt={7}>
+        <Heading size="5xl" textAlign="center" color="textSecondary" mt={7}>
           Tous nos jeux multijoueurs
         </Heading>
         <Flex flexWrap="wrap" gap={5} mt={9} w="full">
@@ -159,6 +192,30 @@ function Index() {
             </Card.Root>
           ))}
         </Flex>
+      </Center>
+      <Center flexDir="column" mt={40}>
+        <Heading size="5xl" textAlign="center" color="textSecondary">
+          Comment jouer à nos jeux
+        </Heading>
+        <Grid templateColumns="repeat(12, 1fr)" gap={5} mt={10}>
+          {gameExplanationItems.map(({ name, description, icon }) => (
+            <GridItem key={name} colSpan={{ base: 12, md: 4 }}>
+              <Card.Root borderRadius="2.5xl">
+                <Card.Body
+                  flexDir="column"
+                  alignItems="center"
+                  textAlign="center"
+                  gap={5}
+                  p={10}
+                >
+                  <Icon as={icon} boxSize={12} color="primary" />
+                  <Heading size="2xl">{name}</Heading>
+                  <Text color="textSecondary">{description}</Text>
+                </Card.Body>
+              </Card.Root>
+            </GridItem>
+          ))}
+        </Grid>
       </Center>
     </Box>
   );
